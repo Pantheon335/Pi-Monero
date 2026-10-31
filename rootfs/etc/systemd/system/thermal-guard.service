@@ -1,0 +1,14 @@
+[Unit]
+Description=Thermal guard for XMRig (pause 77C / resume 65C / power off 82C)
+After=xmrig.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/thermal-guard.sh
+Restart=always
+RestartSec=10
+# Override any threshold here if you want, e.g.:
+# Environment=STOP_AT=75 RESUME_AT=63 SHUTDOWN_AT=80
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+[Unit]
+Description=XMRig Monero miner
+Wants=network-online.target
+After=network-online.target xmrig-config.service
+Requires=xmrig-config.service
+# Won't start until a valid wallet has been applied on this boot.
+ConditionPathExists=/var/lib/xmrig/configured
+
+[Service]
+User=xmrig
+Group=xmrig
+ExecStart=/opt/xmrig/xmrig --config=/opt/xmrig/config.json
+Restart=always
+RestartSec=10
+Nice=10
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/xmrig /var/lib/xmrig
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

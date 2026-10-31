@@ -1,0 +1,35 @@
+{
+    "autosave": true,
+    "background": false,
+    "colors": true,
+    "cpu": {
+        "enabled": true,
+        "huge-pages": true,
+        "yield": true
+    },
+    "opencl": false,
+    "cuda": false,
+    "donate-level": 0,
+    "donate-over-proxy": 0,
+    "log-file": null,
+    "http": {
+        "enabled": true,
+        "host": "127.0.0.1",
+        "port": 8080,
+        "restricted": true
+    },
+    "pools": [
+        {
+            "algo": null,
+            "coin": "monero",
+            "url": "pool.supportxmr.com:3333",
+            "user": "__WALLET_PLACEHOLDER__",
+            "pass": "pi5",
+            "tls": false,
+            "keepalive": true,
+            "nicehash": false
+        }
+    ],
+    "retries": 5,
+    "retry-pause": 5
+}

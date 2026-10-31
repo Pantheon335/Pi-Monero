@@ -1,0 +1,11 @@
+[Unit]
+Description=XMRig pool watchdog (restart miner if pool stops crediting shares)
+After=network-online.target xmrig.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/xmrig-watchdog.sh
+SyslogIdentifier=xmrig-watchdog
+# Thresholds (seconds), override if needed:
+# Environment=STALE_SECS=1800 MIN_UPTIME=1800 COOLDOWN=3600
