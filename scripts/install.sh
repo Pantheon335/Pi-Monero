@@ -32,7 +32,7 @@ apt-get install -y --no-install-recommends \
 
 step "Checking that the pool resolves (catches DNS blocking early)"
 POOL_HOST="$(jq -r '.pools[0].url' "$REPO/rootfs/opt/xmrig/config.json" | cut -d: -f1)"
-POOL_IP="$(getent ahosts "$POOL_HOST" | awk 'NR==1{print $1}')"
+POOL_IP="$(getent ahosts "$POOL_HOST" 2>/dev/null | awk 'NR==1{print $1}' || true)"
 case "$POOL_IP" in
   "")              echo "    WARNING: $POOL_HOST does not resolve. Check DNS before expecting shares." ;;
   0.0.0.0|::|127.*) echo "    WARNING: $POOL_HOST resolves to $POOL_IP: this network's DNS blocks the pool." ;;
