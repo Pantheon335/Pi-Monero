@@ -1,0 +1,12 @@
+Rename this file to  xmrig-wallet.txt  (remove the ".example")
+and replace the line below with your own Monero wallet address.
+
+Put ONLY the address on its own line, nothing else:
+
+44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A
+
+On the next boot the Pi reads this file, writes the address into the miner
+config, and starts mining. If the file is missing or the address is invalid,
+the Pi simply does not mine.
+
+Optional: create  xmrig-worker.txt  with a worker name (default: pi5).
